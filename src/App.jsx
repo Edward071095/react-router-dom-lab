@@ -17,7 +17,8 @@ const App = () => {
   const [mailboxes, setMailboxes] = useState(initialState);
 
   const addBox = (newMailboxData) => {
-    newMailboxData._id = mailboxes.length + 1;
+    const maxId = mailboxes.length > 0 ? Math.max(...mailboxes.map(m => m._id)) : 0;
+    newMailboxData._id = maxId + 1;
     setMailboxes([...mailboxes, newMailboxData]);
   };
 

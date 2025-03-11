@@ -1,12 +1,15 @@
 import { useParams } from "react-router";
 
 const MailboxDetails = (props) => {
-
     const { mailboxId } = useParams();
 
     const singleMailbox = props.mailboxes.find((box) => (
         box._id === Number(mailboxId)
     ));
+
+    if (!singleMailbox) {
+        return <h2>Mailbox Not Found!</h2>
+    }
 
     return (
         <>
